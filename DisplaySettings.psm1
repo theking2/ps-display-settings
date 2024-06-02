@@ -15,35 +15,35 @@ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisp
 #>
 function Set-DisplayResolution {
     param (
-        [Parameter(Mandatory = $true, Position = 0)] 
-        [int] 
-        $Width, 
+        [Parameter(Mandatory = $true, Position = 0)]
+        [int]
+        $Width,
 
-        [Parameter(Mandatory = $true, Position = 1)] 
-        [int] 
+        [Parameter(Mandatory = $true, Position = 1)]
+        [int]
         $Height,
 
-        [Parameter(Mandatory = $true, Position = 2)] 
-        [int] 
+        [Parameter(Mandatory = $true, Position = 2)]
+        [int]
         $RefreshRate,
 
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
-    
+
     [cds.Helper]::setDisplayResolution($width, $height, $refreshRate, $flag)
 }
 
 function Set-DisplayRefreshRate {
     param (
-        [Parameter(Mandatory = $true, Position = 0)] 
-        [int] 
+        [Parameter(Mandatory = $true, Position = 0)]
+        [int]
         $RefreshRate,
 
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
-    
+
     [cds.Helper]::setDisplayRefreshRate($refreshRate, $flag)
 }
 
@@ -59,13 +59,13 @@ if (Test-Path $cdsPath) {
     try {
         Add-Type -TypeDefinition $cds -Language CSharp
     } catch {
-        Write-Host "Failed to load C# type: $_"
+        Write-Output "Failed to load C# type: $_"
     }
 } else {
-    Write-Host "CDS.cs file not found at $cdsPath"
+    Write-Information "CDS.cs file not found at $cdsPath"
 }
 
 # Verify if the type is available
 if ( null -eq "cds.Helper".GetType()) {
-    Write-Host "cds.Helper type is not available."
+    Write-Output "cds.Helper type is not available."
 }
