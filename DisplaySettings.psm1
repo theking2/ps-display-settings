@@ -14,6 +14,7 @@
 https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-changedisplaysettingsa#parameters
 #>
 function Set-DisplayResolution {
+    [CmdletBinding(SupportsShouldProcess)]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [int]
@@ -30,11 +31,13 @@ function Set-DisplayResolution {
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
-
-    [cds.Helper]::setDisplayResolution($width, $height, $refreshRate, $flag)
+    if ($PSCmdlet.ShouldProcess("Set Display Resolution", "Set Display Resolution to $Width x $Height with $RefreshRate refresh rate")) {
+        [cds.Helper]::setDisplayResolution($width, $height, $refreshRate, $flag)
+    }
 }
 
 function Set-DisplayRefreshRate {
+    [CmdletBinding(SupportsShouldProcess)]
     param (
         [Parameter(Mandatory = $true, Position = 0)]
         [int]
@@ -43,8 +46,9 @@ function Set-DisplayRefreshRate {
         [CDSFlags]
         $Flag = [CDSFlags]::Dynamically
     )
-
-    [cds.Helper]::setDisplayRefreshRate($refreshRate, $flag)
+    if ($PSCmdlet.ShouldProcess("Set Display Refresh Rate", "Set Display Refresh Rate to $RefreshRate")) {
+        [cds.Helper]::setDisplayRefreshRate($refreshRate, $flag)
+    }
 }
 
 function Get-DisplayResolution {
@@ -58,10 +62,12 @@ if (Test-Path $cdsPath) {
     $cds = Get-Content $cdsPath -Raw
     try {
         Add-Type -TypeDefinition $cds -Language CSharp
-    } catch {
+    }
+    catch {
         Write-Output "Failed to load C# type: $_"
     }
-} else {
+}
+else {
     Write-Information "CDS.cs file not found at $cdsPath"
 }
 
