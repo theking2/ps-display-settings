@@ -10,7 +10,7 @@ In PowerShell (core, not the Windows Powershell). And with hotkeys
 
 ## Usage
 
-- `Get-DisplayRefreshRate` - gets the current display settings
+- `Get-DisplayResolution` - gets the current display settings
 - `Set-DisplayRefreshRate` -RefreshRate int -Flags int
 
 ### Flags
