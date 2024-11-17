@@ -33,3 +33,17 @@ CDS_NORESET        |          0x10000000
 - "An invalid set of flags was passed in.";
 - "An invalid parameter was passed in. This can include an invalid flag or combination of flags.";
 - "The settings change was unsuccessful because the system is DualView capable.";
+
+## Auto Hotkey
+
+The [AutoHotkey](https://www.autohotkey.com/) script can be used to switch refreshrates with simple keyboard shortcuts:
+
+Shortcut | Refresh rate
+--|--
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>7</kbd>|23.976
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>4</kbd>|24
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd>|25
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>9</kbd>|29.970
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>3</kbd>|30
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>5</kbd>|50
+<kbd>Win</kbd>+<kbd>Alt</kbd>+<kbd>6</kbd>|60
