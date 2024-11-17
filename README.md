@@ -1,13 +1,16 @@
-# Change Display Settings
+# Change Display Refresh rate
+
+In PowerShell (core, not the Windows Powershell). And with hotkeys
 
 ## Installation
 
-Copy both files to $env:PSModulePath/DisplaySettings
+0. Install [Powershell (core)](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows)
+1. Create a folder `DisplaySettings` in your Powershell Modules folder (`%USerProfile\Documets\Powershell\Modules` or `%UserProfile%\OneDrive\Documents\Powershell\Modules` if you sync with OneDrive)
+2. Copy all files to this folder
 
 ## Usage
 
-- `Get-DisplayResolution` - gets the current display settings
-- `Set-DisplayResolution` -Width int -Height int -RefreshRate int -Flags int
+- `Get-DisplayRefreshRate` - gets the current display settings
 - `Set-DisplayRefreshRate` -RefreshRate int -Flags int
 
 ### Flags
@@ -21,7 +24,6 @@ CDS_GLOBAL         |          0x00000008
 CDS_SET_PRIMARY    |          0x00000010
 CDS_RESET          |          0x40000000
 CDS_NORESET        |          0x10000000
-
 
 ### Results
 
